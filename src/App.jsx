@@ -1,14 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
-import { Button } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Outlet } from 'react-router-dom';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div>
-      <Button>App</Button>
+    <div className='App'>
+      <Outlet />
     </div>
   )
 }
