@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <div className="App">
-        {!admin ? (
+        {admin ? (
           <HashRouter>
             <Routes>
               <Route exact path="/" element={<Login />}></Route>
