@@ -4,7 +4,7 @@ const initialState = {
   tour: null,
 };
 
-export const adminSlice = createSlice({
+export const tourSlice = createSlice({
   name: "tour",
   initialState,
   reducers: {

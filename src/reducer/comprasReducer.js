@@ -16,6 +16,6 @@ export const comprasSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setCompras } = adminSlice.actions;
+export const { setCompras } = comprasSlice.actions;
 
 export default comprasSlice.reducer;

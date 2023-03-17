@@ -13,7 +13,7 @@ export const adminSlice = createSlice({
       state.admin = action.payload;
     },
     delAdmin: (state) => {
-      state.user = null;
+      state.admin = null;
       localStorage.removeItem("azul_admin");
     },
   },
