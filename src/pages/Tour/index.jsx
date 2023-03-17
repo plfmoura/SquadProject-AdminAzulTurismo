@@ -4,7 +4,7 @@ import { setTour } from "../../reducer/tourReducer";
 import axios from "axios";
 
 export default function Tour() {
-  /* const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const getTour = async () => {
     const options = {
       method: "GET",
@@ -17,7 +17,7 @@ export default function Tour() {
   };
   useEffect(() => {
     getTour();
-  }, []);*/
+  }, []);
 
   return (
     <div>
