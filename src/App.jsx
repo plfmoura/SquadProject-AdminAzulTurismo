@@ -6,7 +6,7 @@ import Purchase from "./pages/Purchase";
 import Tour from "./pages/Tour";
 import Users from "./pages/Users";
 import Login from "./pages/Login";
-import Error404 from "./pages/Error404";
+import ErrorPage from "./pages/ErrorPage";
 import NavBar from "./components/NavBar";
 import { useEffect } from "react";
 import { setAdmin } from "./reducer/adminReducer";
@@ -24,11 +24,11 @@ function App() {
   }, []);
   return (
     <>
-      {!admin ? (
+      {admin ? (
         <HashRouter>
           <Routes>
             <Route exact path="/" element={<Login />}></Route>
-            <Route path="*" element={<Error404 />}></Route>
+            <Route path="*" element={<ErrorPage />}></Route>
           </Routes>
         </HashRouter>
       ) : (
@@ -38,7 +38,7 @@ function App() {
             <Route exact path="/purchase" element={<Purchase />}></Route>
             <Route exact path="/tour" element={<Tour />}></Route>
             <Route exact path="/users" element={<Users />}></Route>
-            <Route path="*" element={<Error404 />}></Route>
+            <Route path="*" element={<ErrorPage />}></Route>
           </Routes>
         </HashRouter>
       )}

@@ -3,7 +3,8 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    animation: appears 5000ms ease normal;
+    animation: appears 500ms ease normal;
+    background-color: #fafafa;
 }
 
 @keyframes appears {
