@@ -7,14 +7,24 @@ import Tour from "./pages/Tour";
 import Users from "./pages/Users";
 import Login from "./pages/Login";
 import Error404 from "./pages/Error404";
+import NavBar from "./components/NavBar";
+import { useEffect } from "react";
+import { setAdmin } from "./reducer/adminReducer";
 
 function App() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const { admin } = state.admin;
+
+  useEffect(() => {
+    let admin = JSON.parse(localStorage.getItem("azul_admin"));
+    if (admin) {
+      dispatch(setAdmin(admin));
+    }
+  }, []);
   return (
     <>
-      {admin ? (
+      {!admin ? (
         <HashRouter>
           <Routes>
             <Route exact path="/" element={<Login />}></Route>
@@ -23,7 +33,7 @@ function App() {
         </HashRouter>
       ) : (
         <HashRouter>
-          {/*<NavbarAdmin /> */}
+          <NavBar />
           <Routes>
             <Route exact path="/compras" element={<Compras />}></Route>
             <Route exact path="/tour" element={<Tour />}></Route>

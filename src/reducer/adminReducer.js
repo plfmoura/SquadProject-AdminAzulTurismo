@@ -15,6 +15,7 @@ export const adminSlice = createSlice({
     delAdmin: (state) => {
       state.admin = null;
       localStorage.removeItem("azul_admin");
+      localStorage.removeItem("token_admin");
     },
   },
 });
