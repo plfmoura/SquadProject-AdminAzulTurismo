@@ -1,0 +1,15 @@
+.Purchase-container {
+    margin-top: 5vh;
+    display: grid;
+    place-content: center;
+    animation: page-appears 500ms ease normal;
+}
+
+@keyframes page-appears {
+    from {
+        transform: translateX(200vw);
+    }
+    to {
+        transform: translateX(0vw);
+    }
+}

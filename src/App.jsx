@@ -24,7 +24,7 @@ function App() {
   }, []);
   return (
     <>
-      {admin ? (
+      {!admin ? (
         <HashRouter>
           <Routes>
             <Route exact path="/" element={<Login />}></Route>

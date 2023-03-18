@@ -1,16 +1,20 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { delAdmin, setAdmin } from "../../reducer/adminReducer";
 import { setCompras } from "../../reducer/comprasReducer";
 import { setTour } from "../../reducer/tourReducer";
 import { setUsers } from "../../reducer/usersReducer";
 import axios from "axios";
+import './navBar.css';
+import { Button } from "react-bootstrap";
 
 const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   let token = JSON.parse(localStorage.getItem("token_admin"));
+  
   const getCompras = async () => {
     const options = {
       method: "GET",
@@ -29,6 +33,7 @@ const NavBar = () => {
       console.log("error");
     }
   };
+
   const getTour = async () => {
     const options = {
       method: "GET",
@@ -42,6 +47,7 @@ const NavBar = () => {
       dispatch(setTour(tour.data));
     } catch (error) {}
   };
+
   const getUsers = async () => {
     const options = {
       method: "GET",
@@ -69,16 +75,16 @@ const NavBar = () => {
   }, []);
 
   return (
-    <>
-      <h1>navBar</h1>
-      <h1
-        onClick={() => {
-          handleLogout();
-        }}
-      >
-        Logout
-      </h1>
-    </>
+    <nav className="navBar-container">
+      <ul>
+        <li><Button variant='light' >Visitar Site</Button></li>
+        <li onClick={() => {
+        handleLogout();
+          }}
+        ><Button variant="danger">Sair</Button></li>
+        
+      </ul>
+    </nav>
   );
 };
 
