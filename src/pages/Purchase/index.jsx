@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { setCompras } from "../../reducer/comprasReducer";
 import axios from "axios";
 
-export default function Compras() {
+export default function Purchase() {
   const dispatch = useDispatch();
 
   useEffect(() => {}, []);

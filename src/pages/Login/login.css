@@ -1,0 +1,16 @@
+.Login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    animation: appears 5000ms ease normal;
+}
+
+@keyframes appears {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

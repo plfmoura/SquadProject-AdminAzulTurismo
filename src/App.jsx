@@ -2,7 +2,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Compras from "./pages/Compras";
+import Purchase from "./pages/Purchase";
 import Tour from "./pages/Tour";
 import Users from "./pages/Users";
 import Login from "./pages/Login";
@@ -35,7 +35,7 @@ function App() {
         <HashRouter>
           <NavBar />
           <Routes>
-            <Route exact path="/compras" element={<Compras />}></Route>
+            <Route exact path="/purchase" element={<Purchase />}></Route>
             <Route exact path="/tour" element={<Tour />}></Route>
             <Route exact path="/users" element={<Users />}></Route>
             <Route path="*" element={<Error404 />}></Route>
