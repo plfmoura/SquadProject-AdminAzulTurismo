@@ -12,7 +12,6 @@ mais badaladas Cariocas, da Região dos Lagos até as favelas cariocas, conectan
 estado, desburocratizando ao máximo o sistema de reservas obsoleto que já não é mais impecílho virtual para conhecer a cultura e admirar a Cidade Maravilhosa.<br/>
 <br/>
 
-
 Repositório do Projeto Principal (Integração Front-End - Back-End): <a href="https://github.com/plfmoura/SquadProject-AzulTurismo">Visualizar</a> 🟢
 
 Repositório do Administrativo (Integração Front-end - Back-End): <a href="https://github.com/plfmoura/SquadProject-AdminAzulTurismo">Visualizar</a> 🟢
