@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { RiSettings5Fill, RiDeleteBin6Fill } from "react-icons/ri";
 
-export default function PurchaseCard({ media, name, date, status }) {
+export default function PurchaseCard({ media, name, date, status, payment }) {
   return (
     <div
       className="purchase-card-container"
@@ -22,7 +22,7 @@ export default function PurchaseCard({ media, name, date, status }) {
         style={{
           display: "flex",
           alignItems: "center",
-          width: '50%',
+          width: '35%',
           margin: '.5rem',
           gap: '2rem'
         }}
@@ -35,6 +35,7 @@ export default function PurchaseCard({ media, name, date, status }) {
         <p style={{fontSize: '1rem', margin: '0'}}>{name}</p>
       </div>
       <p style={{fontSize: '1rem', margin: '0'}}>{date}</p>
+      <p style={{fontSize: '1rem', margin: '0', fontWeight: '600'}}>R${payment}</p>
       <div className="purchase-card-actions" 
         style={{
           display: "flex",
@@ -45,9 +46,9 @@ export default function PurchaseCard({ media, name, date, status }) {
           gap: '2rem'
         }}>
         {status ? (
-          <Button variant="success">Disponível</Button>
+          <Button variant="success">Pagamento Efetuado</Button>
         ) : (
-          <Button variant="danger" disabled>Indisponível</Button>
+          <Button variant="danger" disabled>Pagamento Pendente</Button>
         )}
         <RiSettings5Fill style={{fontSize: '2.5rem'}}/>
         <RiDeleteBin6Fill style={{fontSize: '2.3rem'}}/>

@@ -1,0 +1,64 @@
+.Users-container {
+    width: 100%;
+    margin-top: 5vh;
+    animation: page-appears 500ms ease normal;
+}
+
+@keyframes page-appears {
+    from {
+        transform: translateY(200vw);
+    }
+    to {
+        transform: translateY(0vw);
+    }
+}
+
+.users-header {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 auto;
+}
+
+.users-header h1 {
+    width: 100%;
+    font-weight: 600;
+    color: #333;
+}
+
+.users-header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.users-header .users-shotcuts {
+    display: flex;
+    gap: 1rem;
+    font-size: 14px;
+    color: #0000ff;
+}
+
+.users-header .users-shotcuts span:hover {
+    cursor: pointer;
+    color: #3e97fd;
+}
+
+.search-container {
+    display: flex;
+    gap: .3rem;
+}
+
+/* Seção do conteúdo da página  */
+.users-content {
+    width: 80%;
+    min-height: 100vh;
+    margin: 1rem auto 0;
+    padding: .2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
