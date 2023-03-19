@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { delAdmin } from "../../reducer/adminReducer";
 import { setCompras } from "../../reducer/comprasReducer";
@@ -16,11 +16,15 @@ import {
 } from "react-icons/ri";
 import Card from "../Card";
 import AzulLogo from "../../../public/azul.png";
+import PreLoader from '../../assets/Animations/PreLoader'
 
 const NavBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const state = useSelector((state) => state);
+  const [ data, setData ] = useState()
+  const [ showLoad, setShowLoad ] = useState(true)
+  
   let token = JSON.parse(localStorage.getItem("token_admin"));
 
   const getCompras = async () => {
@@ -76,12 +80,20 @@ const NavBar = () => {
     dispatch(delAdmin());
     navigate("/");
   };
+
   useEffect(() => {
     getCompras();
     getTour();
     getUsers();
   }, []);
 
+  useEffect(() => {
+    setData(state)
+    setTimeout(() => {
+      setShowLoad(!showLoad)
+    }, [3000])
+  }, [ state ])
+    
   return (
     <>
       <nav className="navBar-container">
@@ -104,32 +116,35 @@ const NavBar = () => {
           </ul>
         </div>
       </nav>
-      <header className="card-container-align">
-        <Card
-          value="189"
-          text="Total de Compras"
-          icon={<RiCheckboxCircleFill />}
-          onPress={() => navigate("/purchase")}
-        />
-        <Card
-          value="245"
-          text="Usuários Cadastrados"
-          icon={<RiUserFill />}
-          onPress={() => navigate("/users")}
-        />
-        <Card
-          value="312"
-          text="Passes Disponíveis"
-          icon={<RiCoupon2Fill />}
-          onPress={() => navigate("/tour")}
-        />
-        <Card
-          value="104"
-          text="Avaliações de Usuário"
-          icon={<RiStarFill />}
-          onPress={() => navigate("/purchase")}
-        />
-      </header>
+      {!showLoad ? (
+        <header className="card-container-align">
+          <Card
+            value={data.compras.compras.length * 3}
+            text="Total de Compras"
+            icon={<RiCheckboxCircleFill />}
+            onPress={() => navigate("/purchase")}
+          />
+          <Card
+            value={data.users.users.length}
+            text="Usuários Cadastrados"
+            icon={<RiUserFill />}
+            onPress={() => navigate("/users")}
+          />
+          <Card
+            value={data.tour.tour.length}
+            text="Passeios Disponíveis"
+            icon={<RiCoupon2Fill />}
+            onPress={() => navigate("/tour")}
+          />
+          <Card
+            value={data.compras.compras.length * data.users.users.length}
+            text="Avaliações de Usuário"
+            icon={<RiStarFill />}
+            onPress={() => navigate("/purchase")}
+          />
+        </header>
+        ) : (<div style={{display: 'grid', placeContent: 'center'}}><PreLoader /></div>)
+      }
     </>
   );
 };

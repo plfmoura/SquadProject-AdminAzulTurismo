@@ -4,14 +4,19 @@ import './purchase.css'
 import { Button } from "react-bootstrap";
 import { RiSearchLine } from "react-icons/ri";
 import PurchaseCard from "./PurchaseCard";
+import PreLoader from "../../assets/Animations/PreLoader";
 
 export default function Purchase() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const [ purchaseData, setPurchaseData ] = useState()
+  const [ load, setLoad ] = useState(true)
 
   useEffect(() => {
     setPurchaseData(state.compras)
+    setTimeout(() => {
+      setLoad(!load)
+    }, [3000])
   }, [state.compras]);
 
   return (
@@ -30,18 +35,23 @@ export default function Purchase() {
         </div>
       </header>
       <section className="purchase-content">
-    	  {purchaseData &&
-          purchaseData.compras.map((item, key) => (
-            <PurchaseCard 
-              media={item.imagens} 
-              name={item.located} 
-              date={item.data_compra.replaceAll('-', '/')}
-              status={true}
-              key={key}
-            />
-          ))
-        }
-      </section>
+      { load ? (<div style={{display: 'grid', placeContent: 'center'}}><PreLoader /></div>) : (
+        <>
+          {purchaseData &&
+            purchaseData.compras.map((item, key) => (
+              <PurchaseCard 
+                media={item.imagens} 
+                name={item.located} 
+                date={item.data_compra.replaceAll('-', '/')}
+                payment={item.payment.toFixed(2)}
+                status={true}
+                key={key}
+              />
+            )) 
+          }
+        </>
+        )}
+        </section>
     </div>
   );
 }
