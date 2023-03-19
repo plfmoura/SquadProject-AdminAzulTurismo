@@ -33,10 +33,13 @@ function FormAuth() {
       if (response.status != 200) {
         throw new Error("login invalid");
       }
-      dispatch(setAdmin(response.data.user));
-      localStorage.setItem("azul_admin", JSON.stringify(response.data.user));
-      localStorage.setItem("token_admin", JSON.stringify(response.data.token));
-      navigate("/purchase");
+      setTimeout(() => {
+        dispatch(setAdmin(response.data.user));
+        localStorage.setItem("azul_admin", JSON.stringify(response.data.user));
+        localStorage.setItem("token_admin", JSON.stringify(response.data.token));
+        setShowContent(true)
+        navigate("/purchase");
+      }, [5000])
     } catch (error) {
       setTimeout(() => {
         setShowContent(true)
@@ -96,7 +99,7 @@ function FormAuth() {
               id="password"
             />
             <div className="auth-status">
-              <span >{authStatus}</span>
+              <span>{authStatus}</span>
             </div>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
