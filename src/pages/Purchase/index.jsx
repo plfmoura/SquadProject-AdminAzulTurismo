@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setCompras } from "../../reducer/comprasReducer";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import './purchase.css'
 import { Button } from "react-bootstrap";
 import { RiSearchLine } from "react-icons/ri";
@@ -9,8 +7,12 @@ import PurchaseCard from "./PurchaseCard";
 
 export default function Purchase() {
   const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const [ purchaseData, setPurchaseData ] = useState()
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    setPurchaseData(state.compras)
+  }, [state.compras]);
 
   return (
     <div className="Purchase-container">
@@ -28,13 +30,17 @@ export default function Purchase() {
         </div>
       </header>
       <section className="purchase-content">
-        <PurchaseCard media='../../public/azul.png' name='Arraial do Cabo' date='24/03/2023'/>
-        <PurchaseCard media='../../public/azul.png' name='Arraial do Cabo' date='24/03/2023'/>
-        <PurchaseCard media='../../public/azul.png' name='Arraial do Cabo' date='24/03/2023'/>
-        <PurchaseCard media='../../public/azul.png' name='Arraial do Cabo' date='24/03/2023'/>
-        <PurchaseCard media='../../public/azul.png' name='Arraial do Cabo' date='24/03/2023'/>
-        <PurchaseCard media='../../public/azul.png' name='Arraial do Cabo' date='24/03/2023'/>
-        <PurchaseCard media='../../public/azul.png' name='Arraial do Cabo' date='24/03/2023'/>
+    	  {purchaseData &&
+          purchaseData.compras.map((item, key) => (
+            <PurchaseCard 
+              media={item.imagens} 
+              name={item.located} 
+              date={item.data_compra.replaceAll('-', '/')}
+              status={true}
+              key={key}
+            />
+          ))
+        }
       </section>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { delAdmin, setAdmin } from "../../reducer/adminReducer";
+import { useNavigate } from "react-router-dom";
+import { delAdmin } from "../../reducer/adminReducer";
 import { setCompras } from "../../reducer/comprasReducer";
 import { setTour } from "../../reducer/tourReducer";
 import { setUsers } from "../../reducer/usersReducer";

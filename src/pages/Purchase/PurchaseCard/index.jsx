@@ -30,11 +30,11 @@ export default function PurchaseCard({ media, name, date, status }) {
         <img
           src={media}
           alt={name}
-          style={{ height: "80px", objectFit: "cover" }}
+          style={{ height: "80px", width: '90px', borderRadius: '10px', objectFit: "cover" }}
         />
-        <p style={{fontSize: '1.5rem', margin: '0'}}>{name}</p>
+        <p style={{fontSize: '1rem', margin: '0'}}>{name}</p>
       </div>
-      <p style={{fontSize: '1.5rem', margin: '0'}}>{date}</p>
+      <p style={{fontSize: '1rem', margin: '0'}}>{date}</p>
       <div className="purchase-card-actions" 
         style={{
           display: "flex",

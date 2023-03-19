@@ -6,10 +6,10 @@
 
 @keyframes page-appears {
     from {
-        transform: translateX(200vw);
+        transform: translateY(200vw);
     }
     to {
-        transform: translateX(0vw);
+        transform: translateY(0vw);
     }
 }
 
