@@ -52,8 +52,13 @@
 
 /* Seção do conteúdo da página  */
 .users-content {
-    width: 70%;
+    width: 80%;
     min-height: 100vh;
     margin: 1rem auto 0;
     padding: .2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
