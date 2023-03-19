@@ -8,6 +8,9 @@ import { setUsers } from "../../reducer/usersReducer";
 import axios from "axios";
 import './navBar.css';
 import { Button } from "react-bootstrap";
+import { RiUserFill, RiCheckboxCircleFill, RiStarFill, RiCoupon2Fill } from "react-icons/ri";
+import Card from "../Card";
+import AzulLogo from '../../../public/azul.png'
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -75,16 +78,33 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className="navBar-container">
-      <ul>
-        <li><Button variant='light' >Visitar Site</Button></li>
-        <li onClick={() => {
-        handleLogout();
-          }}
-        ><Button variant="danger">Sair</Button></li>
-        
-      </ul>
-    </nav>
+    <>
+      <nav className="navBar-container">
+        <div className="navBar-align">
+          <div className="navBar-logo">
+            <img 
+              src={AzulLogo} 
+              alt="Logo da empresa Azul Tour" 
+              />
+            <span>Administrativo</span>
+          </div>
+          <ul>
+            <li><Button variant='light' >Visitar Site</Button></li>
+            <li onClick={() => {
+            handleLogout();
+              }}
+            ><Button variant="danger">Sair</Button></li>
+            
+          </ul>
+        </div>
+      </nav>
+      <header className="card-container-align">
+        <Card value='189' text='Total de Compras' icon={ <RiCheckboxCircleFill /> } />
+        <Card value='245' text='Usuários Cadastrados' icon={ <RiUserFill /> } />
+        <Card value='312' text='Passes Disponíveis' icon={ <RiCoupon2Fill /> } />
+        <Card value='104' text='Avaliações de Usuário' icon={ <RiStarFill /> } />
+      </header>
+    </>
   );
 };
 
