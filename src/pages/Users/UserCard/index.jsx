@@ -20,10 +20,11 @@ export default function UserCard({
         alignItems: "center",
         flexDirection: "column",
         justifyContent: "space-between",
+        backgroundColor: '#fff',
         borderRadius: "10px",
         width: "15rem",
         height: "14rem",
-        boxShadow: "#33333360 0px 2px 1px 1.5px",
+        boxShadow: "#33333360 0px 1px 3px 1px",
       }}
     >
       <div
@@ -39,10 +40,11 @@ export default function UserCard({
         <img
           src={media}
           alt=""
-          style={{ width: "80px", height: "80px", objectFit: "cover" }}
+          style={{ width: "80px", height: "80px", objectFit: "cover", borderRadius: 10 }}
         />
         <div style={{
               fontSize: "14px",
+              marginLeft: 10
             }}>
           <p >{userName}</p>
           <span style={{display: 'block'}}>{initialDate}</span>
