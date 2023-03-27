@@ -1,5 +1,5 @@
 .Tour-container {
-    width: 70rem;
+    width: 68rem;
     margin: 5vh auto 0;
     animation: page-appears 500ms ease normal;
 }
@@ -56,4 +56,8 @@
     min-height: 100vh;
     margin: 1rem auto 0;
     padding: .2rem;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
