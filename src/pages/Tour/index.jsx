@@ -20,10 +20,11 @@ export default function Tour() {
     <div className="Tour-container">
       <header className="tour-header">
         <div className="tour-header-content">
-          <h1>Passeios Disponíveis</h1>
+          <h1>Passes Disponíveis</h1>
           <div className="tour-shotcuts">
-            <span>Passeios mais Comprados</span>
-            <span>Passeios mais Avaliados</span>
+            <span>Passeios mais frequentes</span>
+            <span>Passeios mais avaliados</span>
+            <span>Passeios com maior disponibilidade</span>
           </div>
         </div>
         <div className="search-container">
