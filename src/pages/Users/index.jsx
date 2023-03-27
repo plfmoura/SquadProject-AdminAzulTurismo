@@ -1,15 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./users.css";
 import { Button } from "react-bootstrap";
 import { RiSearchLine } from "react-icons/ri";
 import UserCard from "./UserCard";
 import PreLoader from "../../assets/Animations/PreLoader";
+import { CardContext } from "../../context/CardContext";
 
 export default function Users() {
   const state = useSelector((state) => state);
   const [data, setData] = useState();
   const [showLoad, setShowLoad] = useState(false);
+  const { handleClean, setUsers } = useContext(CardContext)
+
+  useEffect(() => {
+    handleClean()
+    setUsers(true)
+  } ,[])
 
   useEffect(() => {
     setData(state.users);

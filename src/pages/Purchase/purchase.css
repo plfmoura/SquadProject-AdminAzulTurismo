@@ -1,6 +1,6 @@
 .Purchase-container {
-    width: 100%;
-    margin-top: 5vh;
+    width: 70rem;
+    margin: 5vh auto 0;
     animation: page-appears 500ms ease normal;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .purchase-header {
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -52,7 +52,7 @@
 
 /* Seção do conteúdo da página  */
 .purchase-content {
-    width: 70%;
+    width: 100%;
     min-height: 100vh;
     margin: 1rem auto 0;
     padding: .2rem;

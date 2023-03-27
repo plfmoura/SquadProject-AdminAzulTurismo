@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { delAdmin } from "../../reducer/adminReducer";
@@ -17,6 +17,7 @@ import {
 import Card from "../Card";
 import AzulLogo from "../../../public/azul.png";
 import PreLoader from '../../assets/Animations/PreLoader'
+import { CardContext } from "../../context/CardContext";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,13 @@ const NavBar = () => {
   const state = useSelector((state) => state);
   const [ data, setData ] = useState()
   const [ showLoad, setShowLoad ] = useState(true)
+
+  const { 
+    CardBgColorPurchase,
+    CardBgColorQuestions,
+    CardBgColorTickets,
+    CardBgColorUsers
+  } = useContext(CardContext)
   
   let token = JSON.parse(localStorage.getItem("token_admin"));
 
@@ -123,24 +131,28 @@ const NavBar = () => {
             text="Total de Compras"
             icon={<RiCheckboxCircleFill />}
             onPress={() => navigate("/purchase")}
+            page={CardBgColorPurchase}
           />
           <Card
             value={data.users.users.length}
             text="Usuários Cadastrados"
             icon={<RiUserFill />}
             onPress={() => navigate("/users")}
+            page={CardBgColorUsers}
           />
           <Card
             value={data.tour.tour.length}
-            text="Passeios Disponíveis"
+            text="Passes Disponíveis"
             icon={<RiCoupon2Fill />}
             onPress={() => navigate("/tour")}
+            page={CardBgColorTickets}
           />
           <Card
             value={data.compras.compras.length * data.users.users.length}
-            text="Avaliações de Usuário"
+            text="Perguntas de Usuários"
             icon={<RiStarFill />}
-            onPress={() => navigate("/purchase")}
+            onPress={() => navigate("/faq")}
+            page={CardBgColorQuestions}
           />
         </header>
         ) : (<div style={{display: 'grid', placeContent: 'center'}}><PreLoader /></div>)

@@ -1,16 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './purchase.css'
 import { Button } from "react-bootstrap";
 import { RiSearchLine } from "react-icons/ri";
 import PurchaseCard from "./PurchaseCard";
 import PreLoader from "../../assets/Animations/PreLoader";
+import { CardContext } from "../../context/CardContext";
 
 export default function Purchase() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
   const [ purchaseData, setPurchaseData ] = useState()
   const [ load, setLoad ] = useState(true)
+  const { handleClean, setPurchase } = useContext(CardContext)
+
+  useEffect(() => {
+    handleClean()
+    setPurchase(true)
+  } ,[])
 
   useEffect(() => {
     setPurchaseData(state.compras)

@@ -1,4 +1,4 @@
-.Tour-container {
+.Faq-container {
     width: 70rem;
     margin: 5vh auto 0;
     animation: page-appears 500ms ease normal;
@@ -13,7 +13,7 @@
     }
 }
 
-.tour-header {
+.faq-header {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -21,26 +21,26 @@
     margin: 0 auto;
 }
 
-.tour-header h1 {
+.faq-header h1 {
     width: 100%;
     font-weight: 600;
     color: #333;
 }
 
-.tour-header-content {
+.faq-header-content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-.tour-header .tour-shotcuts {
+.faq-header .faq-shotcuts {
     display: flex;
     gap: 1rem;
     font-size: 14px;
     color: #0000ff;
 }
 
-.tour-header .tour-shotcuts span:hover {
+.faq-header .faq-shotcuts span:hover {
     cursor: pointer;
     color: #3e97fd;
 }
@@ -51,7 +51,7 @@
 }
 
 /* Seção do conteúdo da página  */
-.tour-content {
+.faq-content {
     width: 100%;
     min-height: 100vh;
     margin: 1rem auto 0;
