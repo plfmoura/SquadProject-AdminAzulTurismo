@@ -1,15 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setTour } from "../../reducer/tourReducer";
 import axios from "axios";
 import { Button } from "react-bootstrap";
 import { RiSearchLine } from "react-icons/ri";
 import './tour.css'
+import { CardContext } from "../../context/CardContext";
 
 export default function Tour() {
   const dispatch = useDispatch();
+  const { handleClean, setTickets } = useContext(CardContext)
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    handleClean()
+    setTickets(true)
+  } ,[])
 
   return (
     <div className="Tour-container">
