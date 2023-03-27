@@ -142,16 +142,16 @@ const NavBar = () => {
           />
           <Card
             value={data.tour.tour.length}
-            text="Passeios Disponíveis"
+            text="Passes Disponíveis"
             icon={<RiCoupon2Fill />}
             onPress={() => navigate("/tour")}
             page={CardBgColorTickets}
           />
           <Card
             value={data.compras.compras.length * data.users.users.length}
-            text="Avaliações de Usuário"
+            text="Perguntas de Usuários"
             icon={<RiStarFill />}
-            onPress={() => navigate("/purchase")}
+            onPress={() => navigate("/faq")}
             page={CardBgColorQuestions}
           />
         </header>
