@@ -77,7 +77,6 @@ export default function EditTour({ onAbort, onDelete, filterKey }) {
                       <input type="text" placeholder="VALOR" defaultValue={data.price}/>
                   </div>
               </div>
-              
           </section>
         </main>
         <footer className="add-new-tour-footer" style={{width: '80%'}}>
