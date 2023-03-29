@@ -5,13 +5,16 @@ import { store } from "./store";
 import "./index.css";
 import App from "./App";
 import { CardProvider } from "./context/CardContext";
+import { TourProvider } from "./context/TourContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <CardProvider>
-        <App />
-      </CardProvider>
+      <TourProvider>
+        <CardProvider>
+          <App />
+        </CardProvider>
+      </TourProvider>
     </Provider>
   </React.StrictMode>
 );

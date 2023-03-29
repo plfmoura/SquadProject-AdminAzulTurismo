@@ -42,17 +42,18 @@
 }
 
 .tour-card-editable-input {
-    animation: input-editable 2s ease infinite;
+    animation: input-editable 1s ease infinite, appears-input 200ms ease normal;
     text-align: center;
     width: 6rem;
+    transition: all 300ms ease;
 }
 
 @keyframes input-editable {
     0%,100% {
-        border: 2px solid #4ee4ff;
+        border: 2px solid #c6f4fc;
     }
     25% {
-        border: 2px solid #2296e9;
+        border: 2px solid #88cdff;
     }
     50% {
         border: 2px solid #0e7ac7;
@@ -60,6 +61,37 @@
     75% {
         border: 2px solid #0549c7;
     }
+}
+
+@keyframes appears-input {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.done-icon-editable-input {
+    color: #00aa00;
+    font-size: 30px;
+}
+
+.done-icon-editable-input:hover {
+    color: #008800;
+    cursor: pointer;
+}
+
+.cancel-icon-editable-input {
+    color: #ee0000;
+    font-size: 30px;
+}
+
+.cancel-icon-editable-input:hover {
+    color: #dd0000;
+    cursor: pointer;
 }
 
 .tourCard-footer-content {   

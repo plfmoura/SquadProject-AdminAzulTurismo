@@ -18,7 +18,6 @@ export default function TourCard({
   totalPurchase,
   onPress,
 }) {
-
   const [ smallMenu, setSmallMenu ] = useState(false)
   const [ dateController, setDateController ] = useState(false)
   const [ priceController, setPriceController ] = useState(false)
@@ -39,6 +38,10 @@ export default function TourCard({
     setPriceController(false)
   }
 
+  const handleCloseMenu = () => {
+    setTimeout(() => { setSmallMenu(false)}, [1000])
+  }
+
   return (
     <div className="tourCard-container">
       <div className="tourCard-align-first-content">
@@ -52,10 +55,12 @@ export default function TourCard({
               <input type="tel" defaultValue={purchaseValue} className='tour-card-editable-input'/> 
               <RiCheckboxFill 
                   onClick={() => setPriceController(!priceController)}
-                  style={{fontSize: 30, color: '#00aa00'}}/>
+                  className='done-icon-editable-input'
+                  />
               <AiFillCloseSquare 
                 onClick={() => setPriceController(false)}
-                style={{fontSize: 30, color: '#aa0000'}}/>
+                className='cancel-icon-editable-input'
+                />
             </div>
             ) : (
             <span>R${purchaseValue}</span>)}
@@ -65,10 +70,12 @@ export default function TourCard({
               <input type="text" defaultValue={date} className='tour-card-editable-input'/>
               <RiCheckboxFill 
                 onClick={() => setDateController(!dateController)}
-                style={{fontSize: 30, color: '#00aa00'}}/>
+                className='done-icon-editable-input'
+                />
               <AiFillCloseSquare 
                 onClick={() => setDateController(false)}
-                style={{fontSize: 30, color: '#aa0000'}}/>
+                className='cancel-icon-editable-input'
+                />
             </div>
             ) : (
             <label>Data prevista: <strong>{date}</strong></label>)}
@@ -104,9 +111,11 @@ export default function TourCard({
             style={smallMenu && {color: '#0044ff', animation: 'none'}}
           />
           {smallMenu && 
-            <nav className="tour-card-small-menu">
+            <nav className="tour-card-small-menu" onMouseLeave={ handleCloseMenu }>
               <label onClick={alterPurchasePrice}>Alterar Valor</label>
               <label onClick={alterDate}>Alterar Data</label>
+              <label style={{color: '#777'}}>Desabilitar</label>
+              <label style={{color: '#ff0000'}} onClick={onPress}>Excluir</label>
               <label onClick={onPress}>Alterações Gerais</label>
             </nav>}
         </div>
