@@ -8,6 +8,9 @@ import { BsPlusSquareFill } from "react-icons/bs";
 import './tour.css'
 import { CardContext } from "../../context/CardContext";
 import TourCard from "./TourCard";
+import OurModal from "../../components/Modal";
+import AddTour from "./AddTour";
+import EditTour from "./EditTour";
 
 export default function Tour() {
   const dispatch = useDispatch();
@@ -15,6 +18,7 @@ export default function Tour() {
   const [data, setData] = useState();
   const [showLoad, setShowLoad] = useState(false);
   const {handleClean, setTickets} = useContext(CardContext)
+  const [modalShow, setModalShow] = useState(false);
 
   useEffect(() => {
     handleClean()
@@ -28,7 +32,32 @@ export default function Tour() {
     }, [3000]);
   }, [state]);
 
+  const [ edit, setEdit ] = useState(true)
+
+  const handleDelete = () => {
+    console.log('Destino Excluído')
+    setModalShow(false)
+  }
+
+  const [ selectedTour, setSelectedTour ] = useState(null)
+
+  const handleTourSelected = (key) => {
+    setSelectedTour(key)
+    setEdit(true)
+    setModalShow(true) 
+  }
+
   return (
+    <>
+    <OurModal 
+      show={modalShow}
+      children={!edit ? (
+        <AddTour onAbort={() => setModalShow(false)}/>
+        ) : (
+          <EditTour filterKey={selectedTour} onAbort={() => setModalShow(false)} onDelete={handleDelete}/>
+        )
+      }
+      />
     <div className="Tour-container">
       <header className="tour-header">
         <div className="tour-header-content">
@@ -45,7 +74,7 @@ export default function Tour() {
         </div>
       </header>
       <section className="tour-content">
-        <div className="card-add-newTour">
+        <div className="card-add-newTour" onClick={() => {setModalShow(true); setEdit(false)}}>
           <div 
             className="car-add-newTour-content"
             style={{
@@ -56,11 +85,11 @@ export default function Tour() {
               backgroundColor: '#c1c1c1',
               borderRadius: "10px",
               width: "16rem",
-              height: "20rem",
+              height: "21rem",
               gap: 5,
               boxShadow: "#333333ff 0px 1px 3px 1px",
             }}>
-            <BsPlusSquareFill style={{fontSize: '2.2rem', color: '#333', borderRadius: 10}}/>
+            <BsPlusSquareFill style={{fontSize: '2.2rem', borderRadius: 10}}/>
             <span>Adicionar novo Destino</span>
           </div>
         </div>
@@ -73,10 +102,13 @@ export default function Tour() {
               located={tour.located}
               totalPurchase={0}
               tourName={tour.name}
-              key={tour.id}/>
+              key={tour.id}
+              onPress={(e) => handleTourSelected(tour.id)}
+              />
           ))
         }
       </section>
     </div>
+    </>
   );
 }

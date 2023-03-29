@@ -61,3 +61,16 @@
     gap: 1rem;
     flex-wrap: wrap;
 }
+
+.card-add-newTour div {
+    color: #777;
+} 
+
+.card-add-newTour:hover {
+    cursor: pointer;
+}
+
+.card-add-newTour:hover div {
+    color: #333;
+    transition: all 200ms ease;
+} 
