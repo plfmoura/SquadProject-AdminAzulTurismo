@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import "../AddTour/addTour.css";
+import { BsFillPencilFill } from "react-icons/bs";
 
 export default function EditTour({ onAbort, onDelete, filterKey }) {
   const state = useSelector((state) => state);
@@ -31,10 +32,18 @@ export default function EditTour({ onAbort, onDelete, filterKey }) {
             Adicione 4 imagens referentes ao Destino
           </label>
           <section className="add-new-tour-image_container">
-            <img src={data.imagens[0]} width='20%'/>
-            <img src={data.imagens[1]} width='20%'/>
-            <img src={data.imagens[2]} width='20%'/>
-            <img src={data.imagens[3]} width='20%'/>
+            <div className="add-new-tour-image-content">
+              <img src={data.imagens[0]} width='20%'/>
+              <img src={data.imagens[1]} width='20%'/>
+              <img src={data.imagens[2]} width='20%'/>
+              <img src={data.imagens[3]} width='20%'/>
+            </div>
+            <div className="add-new-tour-editable-icon">
+              <span><BsFillPencilFill className="editable-pen-icon"/></span>
+              <span><BsFillPencilFill className="editable-pen-icon"/></span>
+              <span><BsFillPencilFill className="editable-pen-icon"/></span>
+              <span><BsFillPencilFill className="editable-pen-icon"/></span>
+            </div>
           </section>
           <section className="add-new-tour-input-fields">
               <div className="left-form-side">

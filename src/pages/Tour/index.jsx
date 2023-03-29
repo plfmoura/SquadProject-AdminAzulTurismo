@@ -100,7 +100,7 @@ export default function Tour() {
               avaiableTickets={tour.capacity - tour.sold} 
               purchaseValue={tour.price}
               located={tour.located}
-              totalPurchase={0}
+              totalPurchase={tour.sold}
               tourName={tour.name}
               key={tour.id}
               onPress={(e) => handleTourSelected(tour.id)}
