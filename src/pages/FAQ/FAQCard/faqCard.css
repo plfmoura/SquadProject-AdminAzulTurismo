@@ -1,0 +1,67 @@
+.faqCard-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 20rem;
+    height: 10rem;
+    box-shadow: #33333360 0px 1px 3px 1px;
+}
+
+.faqCard-question-area {
+    resize: none;
+    width: 90%;
+    border-radius: 10px;
+    border: none;
+    background-color: #c9c9c9;
+    overflow: hidden;
+    outline: none;
+}
+
+.faqCard-footer-area {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faqCard-delete-icon,
+.faqCard-settings-icon {
+    font-size: 30px;
+    transition: all 200ms ease;
+    cursor: pointer;
+    color: #333;
+}
+
+.faqCard-settings-icon:hover {
+    color: #2ea9ff;
+    animation: rotate-settings-icon 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+}
+
+@keyframes rotate-settings-icon {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+.faqCard-delete-icon:hover {
+    color: #ff0000;
+    animation: shake-delete-icon 10s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+}
+
+@keyframes shake-delete-icon {
+    0%,10%,100% {
+        transform: rotateZ(0deg);
+    }
+    3% {
+        transform: rotateZ(20deg);
+    }
+    7% {
+        transform: rotateZ(-20deg);
+    }
+}

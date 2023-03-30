@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import { CardContext } from "../../context/CardContext";
 import { RiSearchLine } from "react-icons/ri";
 import './faq.css'
+import FAQCard from './FAQCard';
 
 export default function FAQ() {
   const { handleClean, setQuestions } = useContext(CardContext)
@@ -28,7 +29,7 @@ export default function FAQ() {
         </div>
       </header>
       <section className="faq-content">
-
+        <FAQCard status={true}/>
       </section>
     </div>
   )
