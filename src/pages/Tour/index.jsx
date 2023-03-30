@@ -82,12 +82,11 @@ export default function Tour() {
               alignItems: "center",
               flexDirection: "column",
               justifyContent: "center",
-              backgroundColor: '#c1c1c1',
+              backgroundColor: '#c1c1c120',
               borderRadius: "10px",
               width: "16rem",
-              height: "21rem",
+              height: "23rem",
               gap: 5,
-              boxShadow: "#333333ff 0px 1px 3px 1px",
             }}>
             <BsPlusSquareFill style={{fontSize: '2.2rem', borderRadius: 10}}/>
             <span>Adicionar novo Destino</span>
@@ -100,6 +99,7 @@ export default function Tour() {
               avaiableTickets={tour.capacity - tour.sold} 
               purchaseValue={tour.price}
               located={tour.located}
+              date={tour.Date}
               totalPurchase={tour.sold}
               tourName={tour.name}
               key={tour.id}

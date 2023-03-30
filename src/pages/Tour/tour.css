@@ -1,7 +1,15 @@
 .Tour-container {
     width: 68rem;
     margin: 5vh auto 0;
-    animation: page-appears 500ms ease normal;
+    animation: header-appears 1s ease normal;
+}
+@keyframes header-appears {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes page-appears {
@@ -60,6 +68,8 @@
     justify-content: flex-start;
     gap: 1rem;
     flex-wrap: wrap;
+    animation: page-appears 500ms ease normal;
+
 }
 
 .card-add-newTour div {

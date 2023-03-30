@@ -6,19 +6,12 @@
     background-color: #fff;
     border-radius: 10px;
     width: 16rem;
-    height: 21rem;
+    height: 23rem;
     box-shadow: #33333360 0px 1px 3px 1px;
-}
-
-.tourCard-container:hover {
-    transform: scale(1.015);
-    cursor: pointer;
-    transition: all 200ms ease;
 }
 
 .tourCard-align-first-content {
     user-select: none;
-    pointer-events: none;
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -48,9 +41,61 @@
     font-weight: bold;
 }
 
+.tour-card-editable-input {
+    animation: input-editable 1s ease infinite, appears-input 200ms ease normal;
+    text-align: center;
+    width: 6rem;
+    transition: all 300ms ease;
+}
+
+@keyframes input-editable {
+    0%,100% {
+        border: 2px solid #c6f4fc;
+    }
+    25% {
+        border: 2px solid #88cdff;
+    }
+    50% {
+        border: 2px solid #0e7ac7;
+    }
+    75% {
+        border: 2px solid #0549c7;
+    }
+}
+
+@keyframes appears-input {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.done-icon-editable-input {
+    color: #00aa00;
+    font-size: 30px;
+}
+
+.done-icon-editable-input:hover {
+    color: #008800;
+    cursor: pointer;
+}
+
+.cancel-icon-editable-input {
+    color: #ee0000;
+    font-size: 30px;
+}
+
+.cancel-icon-editable-input:hover {
+    color: #dd0000;
+    cursor: pointer;
+}
+
 .tourCard-footer-content {   
     user-select: none;
-    pointer-events: none;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -63,9 +108,61 @@
     justify-content: space-between;
 }
 
-
 .tourCard-footer-content .total-tour-content div{
     display: flex;
     align-items: center;
     gap: .15rem;
+}
+
+.tourCard-settings-icon {
+    font-size: 30px;
+    margin-bottom: 3px;
+    position: relative;
+    transition: all 200ms ease;
+}
+
+.tourCard-settings-icon:hover {
+    cursor: pointer;
+    color: #2ea9ff;
+    animation: rotate-settings-icon 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+}
+
+@keyframes rotate-settings-icon {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+.tour-card-small-menu {
+    position: absolute;
+    background-color: #333;
+    border: 1px solid #333;
+    width: 9rem;
+    height: 10rem;
+    padding: .1rem;
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: -11rem 1rem 0rem 1rem;
+}
+
+.tour-card-small-menu label {
+    cursor: pointer;
+    font-weight: bold;
+    color: #fff;
+    height: 100%;
+    display: grid;
+    place-content: center;
+}
+
+.tour-card-small-menu label:hover {
+    color: #2ea9ff;
+    font-weight: bold;
+    transition: all 300ms ease;
+    background-color: #444;
 }
