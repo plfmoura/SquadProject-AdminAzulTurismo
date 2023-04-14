@@ -26,6 +26,7 @@ Protótipo UX/UI (Figma): <a href="https://www.figma.com/file/yqOtcjypEdqI93c2w0
 
 Fluxo de Usuário (Miro): <a href="https://miro.com/app/board/uXjVPmKHg_o=/?share_link_id=599769016089">Visualizar</a> 
 
+OBS: Consulte algum desenvolvedor para obter acesso a este aplicativo.
 
 ### Contribuidores (em todas as dependências do projeto): 
 
