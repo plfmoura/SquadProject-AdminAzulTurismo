@@ -50,7 +50,7 @@ export default function Tour() {
       children={!edit ? (
         <AddTour onAbort={() => setModalShow(false)}/>
         ) : (
-          <EditTour filterKey={selectedTour} onAbort={() => setModalShow(false)} onDelete={handleDelete}/>
+          <EditTour filterKey={selectedTour} onAbort={() => setModalShow(false)} onDelete={deleteTour}/>
         )
       }
       />
