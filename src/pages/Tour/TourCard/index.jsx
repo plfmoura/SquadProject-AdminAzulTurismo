@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   RiSettings5Fill,
   RiCheckboxCircleFill,
@@ -7,9 +7,9 @@ import {
 } from "react-icons/ri";
 import { AiFillCloseSquare } from "react-icons/ai";
 import "./tourCard.css";
-import { deleteTour } from "../tourActions";
+import { deleteTour, patchTour} from "../tourActions";
 import { useDispatch } from "react-redux";
-import { delTour } from "../../../reducer/tourReducer";
+import { delTour, updateData, updatePrice } from "../../../reducer/tourReducer";
 
 
 
@@ -28,6 +28,8 @@ export default function TourCard({
   const [ dateController, setDateController ] = useState(false)
   const [ priceController, setPriceController ] = useState(false)
   const dispatch = useDispatch();
+  const inputDate=useRef();
+  const inputPrice=useRef();
 
   const alterDate = () => {
     setSmallMenu(false)
@@ -59,9 +61,15 @@ export default function TourCard({
           {/* Tour price controller // conditional render  */}
           {priceController ? ( 
             <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-              <input type="tel" defaultValue={purchaseValue} className='tour-card-editable-input'/> 
+              <input type="tel" defaultValue={purchaseValue} className='tour-card-editable-input' ref={inputPrice}/> 
               <RiCheckboxFill 
-                  onClick={() => setPriceController(!priceController)}
+                  onClick={() => {
+                    //Patch do price
+                    patchTour(id,{price:inputPrice.current.value});
+                    dispatch(
+                      updatePrice({id:id,price:inputPrice.current.value})
+                    );
+                    setPriceController(!priceController)}}
                   className='done-icon-editable-input'
                   />
               <AiFillCloseSquare 
@@ -74,9 +82,15 @@ export default function TourCard({
           {/* Tour date controller // conditional render  */}
           {dateController ? (
             <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-              <input type="text" defaultValue={date} className='tour-card-editable-input'/>
+              <input type="text" defaultValue={date} className='tour-card-editable-input' ref={inputDate}/>
               <RiCheckboxFill 
-                onClick={() => setDateController(!dateController)}
+                onClick={() => {
+                  //Patch da data
+                 patchTour(id,{Date:inputDate.current.value});
+                  dispatch(
+                    updateData({id:id,newDate:inputDate.current.value})
+                  );              
+                  setDateController(!dateController)}}
                 className='done-icon-editable-input'
                 />
               <AiFillCloseSquare 
