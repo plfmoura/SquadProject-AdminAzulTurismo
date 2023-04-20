@@ -7,6 +7,11 @@ import {
 } from "react-icons/ri";
 import { AiFillCloseSquare } from "react-icons/ai";
 import "./tourCard.css";
+import { deleteTour } from "../tourActions";
+import { useDispatch } from "react-redux";
+import { delTour } from "../../../reducer/tourReducer";
+
+
 
 export default function TourCard({
   media,
@@ -16,11 +21,13 @@ export default function TourCard({
   purchaseValue,
   avaiableTickets,
   totalPurchase,
-  onPress,
+  id,
+  onPress
 }) {
   const [ smallMenu, setSmallMenu ] = useState(false)
   const [ dateController, setDateController ] = useState(false)
   const [ priceController, setPriceController ] = useState(false)
+  const dispatch = useDispatch();
 
   const alterDate = () => {
     setSmallMenu(false)
@@ -115,7 +122,9 @@ export default function TourCard({
               <label onClick={alterPurchasePrice}>Alterar Valor</label>
               <label onClick={alterDate}>Alterar Data</label>
               <label style={{color: '#777'}}>Desabilitar</label>
-              <label style={{color: '#ff0000'}} onClick={onPress}>Excluir</label>
+              <label style={{color: '#ff0000'}} onClick={()=>{deleteTour(id);
+              dispatch(delTour(id));
+              }}>Excluir</label>
               <label onClick={onPress}>Alterações Gerais</label>
             </nav>}
         </div>
