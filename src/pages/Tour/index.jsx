@@ -103,7 +103,7 @@ export default function Tour() {
               totalPurchase={tour.sold}
               tourName={tour.name}
               key={tour.id}
-              onPress={(e) => handleTourSelected(tour.id)}
+              onPress={(e) => console.log('o passeio ' + tour.id + ' foi excluido')}
               />
           ))
         }
