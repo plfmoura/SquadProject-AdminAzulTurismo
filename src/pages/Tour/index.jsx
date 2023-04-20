@@ -11,6 +11,7 @@ import TourCard from "./TourCard";
 import OurModal from "../../components/Modal";
 import AddTour from "./AddTour";
 import EditTour from "./EditTour";
+import { handleDelete } from "./productsActions";
 
 export default function Tour() {
   const dispatch = useDispatch();
@@ -33,11 +34,6 @@ export default function Tour() {
   }, [state]);
 
   const [ edit, setEdit ] = useState(true)
-
-  const handleDelete = () => {
-    console.log('Destino Excluído')
-    setModalShow(false)
-  }
 
   const [ selectedTour, setSelectedTour ] = useState(null)
 
@@ -103,7 +99,7 @@ export default function Tour() {
               totalPurchase={tour.sold}
               tourName={tour.name}
               key={tour.id}
-              onPress={(e) => console.log('o passeio ' + tour.id + ' foi excluido')}
+              onPress={() => deleteTour(tour.id)}
               />
           ))
         }
