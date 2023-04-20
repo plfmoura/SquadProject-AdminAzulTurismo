@@ -11,7 +11,7 @@ import TourCard from "./TourCard";
 import OurModal from "../../components/Modal";
 import AddTour from "./AddTour";
 import EditTour from "./EditTour";
-import { handleDelete } from "./productsActions";
+import { deleteTour } from "./tourActions";
 
 export default function Tour() {
   const dispatch = useDispatch();
