@@ -93,15 +93,15 @@ const NavBar = () => {
     getCompras();
     getTour();
     getUsers();
+     setTimeout(() => {
+      setShowLoad(!showLoad)
+    }, [3000])
   }, []);
 
   useEffect(() => {
     setData(state)
-    setTimeout(() => {
-      setShowLoad(!showLoad)
-    }, [3000])
   }, [ state ])
-    
+
   return (
     <>
       <nav className="navBar-container">
