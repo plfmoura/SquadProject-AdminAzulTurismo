@@ -99,7 +99,7 @@ export default function Tour() {
               totalPurchase={tour.sold}
               tourName={tour.name}
               key={tour.id}
-              onPress={() => deleteTour(tour.id)}
+              onPress={() => handleTourSelected(tour.id)}
               />
           ))
         }
