@@ -30,6 +30,7 @@ export default function TourCard({
   const dispatch = useDispatch();
   const inputDate=useRef();
   const inputPrice=useRef();
+ 
 
   const alterDate = () => {
     setSmallMenu(false)
@@ -104,14 +105,19 @@ export default function TourCard({
           {/* Tour date controller // conditional render  */}
           {dateController ? (
             <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-              <input type="date" defaultValue={date} className='tour-card-editable-input' ref={inputDate}/>
+              <input type="date" defaultValue={ date.split("-")[2]+"-"+date.split("-")[1]+"-"+date.split("-")[0]} className='tour-card-editable-input' ref={inputDate}
+              min={new Date().toISOString().split('T')[0]}
+              />
               <RiCheckboxFill 
-                onClick={() => {
-                  //Patch da data
-                /* patchTour(id,{Date:inputDate.current.value});
+                onClick={() => {    
+                  //date em formato dd-mm-yyyy
+                  let date= inputDate.current.value.split("-")[2]+"-"+inputDate.current.value.split("-")[1]+"-"+inputDate.current.value.split("-")[0]
+                  //Patch da date
+                  
+              patchTour(id,{Date:date});
                   dispatch(
-                    updateData({id:id,newDate:inputDate.current.value})
-                  );    */          
+                    updateData({id:id,newDate:date})
+                  );          
                   setDateController(!dateController)}}
                 className='done-icon-editable-input'
                 />
