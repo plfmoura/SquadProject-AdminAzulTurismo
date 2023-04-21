@@ -74,30 +74,24 @@ export default function TourCard({
                 }
 
                 if(e.key.charCodeAt()==66){
-                  console.log("borrar")
                   e.target.value=e.target.value.slice(0,-1);
                   return;
                 }
-               
-/*
-                let value=e.target.value;        
-                if(!(e.key.charCodeAt()==46||e.key.charCodeAt()==66||(e.key.charCodeAt()>47 && e.key.charCodeAt()<58))){
-e.target.value=value.slice(0,-1);
-                }else if((e.target.value.split("").filter((item)=>item.includes("."))).length>1){
-                  e.target.value=value.slice(0,-1);
-                }
-                */
               }            
             }
               />
               <RiCheckboxFill 
                   onClick={() => {
+                
                     //Patch do price
-                    patchTour(id,{price:inputPrice.current.value});
+                    
+                    patchTour(id,{price:Number(inputPrice.current.value).toFixed(2)});
                     dispatch(
-                      updatePrice({id:id,price:inputPrice.current.value})
+                      updatePrice({id:id,price:Number(inputPrice.current.value).toFixed(2)})
                     );
-                    setPriceController(!priceController)}}
+                    setPriceController(!priceController)
+                    
+                  }}
                   className='done-icon-editable-input'
                   />
               <AiFillCloseSquare 
