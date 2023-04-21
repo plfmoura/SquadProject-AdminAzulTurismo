@@ -61,7 +61,35 @@ export default function TourCard({
           {/* Tour price controller // conditional render  */}
           {priceController ? ( 
             <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-              <input type="tel" defaultValue={purchaseValue} className='tour-card-editable-input' ref={inputPrice}/> 
+              <input type="text" defaultValue={purchaseValue} className='tour-card-editable-input' ref={inputPrice} 
+              onKeyDown={(e)=>{
+                e.preventDefault();
+                if(e.key.charCodeAt()>47 && e.key.charCodeAt()<58){
+                e.target.value=e.target.value+e.key;
+                }
+
+                if(!e.target.value.includes(".")&&e.key.charCodeAt()==46){
+                  e.target.value=e.target.value+e.key;
+                  return;
+                }
+
+                if(e.key.charCodeAt()==66){
+                  console.log("borrar")
+                  e.target.value=e.target.value.slice(0,-1);
+                  return;
+                }
+               
+/*
+                let value=e.target.value;        
+                if(!(e.key.charCodeAt()==46||e.key.charCodeAt()==66||(e.key.charCodeAt()>47 && e.key.charCodeAt()<58))){
+e.target.value=value.slice(0,-1);
+                }else if((e.target.value.split("").filter((item)=>item.includes("."))).length>1){
+                  e.target.value=value.slice(0,-1);
+                }
+                */
+              }            
+            }
+              />
               <RiCheckboxFill 
                   onClick={() => {
                     //Patch do price
@@ -82,14 +110,14 @@ export default function TourCard({
           {/* Tour date controller // conditional render  */}
           {dateController ? (
             <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-              <input type="text" defaultValue={date} className='tour-card-editable-input' ref={inputDate}/>
+              <input type="date" defaultValue={date} className='tour-card-editable-input' ref={inputDate}/>
               <RiCheckboxFill 
                 onClick={() => {
                   //Patch da data
-                 patchTour(id,{Date:inputDate.current.value});
+                /* patchTour(id,{Date:inputDate.current.value});
                   dispatch(
                     updateData({id:id,newDate:inputDate.current.value})
-                  );              
+                  );    */          
                   setDateController(!dateController)}}
                 className='done-icon-editable-input'
                 />
