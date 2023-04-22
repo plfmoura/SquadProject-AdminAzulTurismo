@@ -5,6 +5,7 @@ import { delAdmin } from "../../reducer/adminReducer";
 import { setCompras } from "../../reducer/comprasReducer";
 import { setTour } from "../../reducer/tourReducer";
 import { setUsers } from "../../reducer/usersReducer";
+import { setFaq } from "../../reducer/faqReducer";
 import axios from "axios";
 import "./navBar.css";
 import { Button } from "react-bootstrap";
@@ -84,6 +85,24 @@ const NavBar = () => {
       dispatch(setUsers(users.data));
     } catch (error) {}
   };
+
+  const getFAQ = async () => {
+    const options = {
+      method: "GET",
+      url: "https://tourismapi.herokuapp.com/faq",
+      headers: {
+        "auth-token": token,
+      },
+    };
+    try {
+      let faq = await axios.request(options);
+      if (faq.status != 200) {
+        throw error("error");
+      }
+      dispatch(setFaq(faq.data));
+    } catch (error) {}
+  };
+
   const handleLogout = () => {
     dispatch(delAdmin());
     navigate("/");
@@ -93,15 +112,16 @@ const NavBar = () => {
     getCompras();
     getTour();
     getUsers();
+    getFAQ();
+     setTimeout(() => {
+      setShowLoad(!showLoad)
+    }, [3000])
   }, []);
 
   useEffect(() => {
     setData(state)
-    setTimeout(() => {
-      setShowLoad(!showLoad)
-    }, [3000])
   }, [ state ])
-    
+
   return (
     <>
       <nav className="navBar-container">
@@ -148,7 +168,7 @@ const NavBar = () => {
             page={CardBgColorTickets}
           />
           <Card
-            value={data.compras.compras.length * data.users.users.length}
+            value={data.faq.faq.length}
             text="Perguntas de Usuários"
             icon={<RiStarFill />}
             onPress={() => navigate("/faq")}

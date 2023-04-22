@@ -11,6 +11,7 @@ import TourCard from "./TourCard";
 import OurModal from "../../components/Modal";
 import AddTour from "./AddTour";
 import EditTour from "./EditTour";
+import { deleteTour } from "./tourActions";
 
 export default function Tour() {
   const dispatch = useDispatch();
@@ -34,11 +35,6 @@ export default function Tour() {
 
   const [ edit, setEdit ] = useState(true)
 
-  const handleDelete = () => {
-    console.log('Destino Excluído')
-    setModalShow(false)
-  }
-
   const [ selectedTour, setSelectedTour ] = useState(null)
 
   const handleTourSelected = (key) => {
@@ -54,7 +50,7 @@ export default function Tour() {
       children={!edit ? (
         <AddTour onAbort={() => setModalShow(false)}/>
         ) : (
-          <EditTour filterKey={selectedTour} onAbort={() => setModalShow(false)} onDelete={handleDelete}/>
+          <EditTour filterKey={selectedTour} onAbort={() => setModalShow(false)} onDelete={deleteTour}/>
         )
       }
       />
@@ -102,8 +98,9 @@ export default function Tour() {
               date={tour.Date}
               totalPurchase={tour.sold}
               tourName={tour.name}
+              id={tour.id}
               key={tour.id}
-              onPress={(e) => handleTourSelected(tour.id)}
+              onPress={()=>handleTourSelected(tour.id)}
               />
           ))
         }

@@ -10,6 +10,7 @@ export default function FAQCard({ text, status, user, date }) {
         cols="20"
         rows="3"
         value={text}
+        readOnly
         className="faqCard-question-area"
       ></textarea>
       <div className="faqCard-footer-area">

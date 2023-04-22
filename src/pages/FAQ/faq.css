@@ -63,6 +63,9 @@
 .faq-content {
     width: 100%;
     min-height: 100vh;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
     margin: 1rem auto 0;
     padding: .2rem;
     animation: page-appears 500ms ease normal;
