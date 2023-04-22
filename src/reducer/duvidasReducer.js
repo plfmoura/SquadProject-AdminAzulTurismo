@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  faq: null,
+  duvidas: null,
 };
 
 export const duvidasSlice = createSlice({
@@ -12,10 +12,11 @@ export const duvidasSlice = createSlice({
       state.duvidas = action.payload;
     },
     updateDuvida: (state, action) => {
+      console.log(action.payload)
       state.duvidas = state.duvidas.map((item) =>
-        item.id === action.payload.id
-          ? { ...item, response: action.payload.newResponse }
-          : item
+        item.id_duvida === action.payload.id
+        ? { ...item, response: action.payload.response }
+        : item
     )},
     }
   });

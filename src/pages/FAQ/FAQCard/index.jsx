@@ -15,7 +15,7 @@ export default function FAQCard({ text, status, user, date, onSettings, onDelete
       ></textarea>
       <div className="faqCard-footer-area">
         <RiDeleteBin6Fill className="faqCard-delete-icon" onClick={onDelete}/>
-        { status != "" && <span style={{color: '#2ea9ff'}}>Pergunta Respondida!</span>}
+        { status != "" ? <span style={{color: '#2ea9ff'}}>Pergunta respondida!</span> : <span style={{color: '#ff0000'}}>Aguardando resposta.</span>}
         <RiSettings5Fill className="faqCard-settings-icon" onClick={onSettings}/> 
       </div>
     </div>

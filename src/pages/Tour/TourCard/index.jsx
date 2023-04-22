@@ -11,8 +11,6 @@ import { deleteTour, patchTour} from "../tourActions";
 import { useDispatch } from "react-redux";
 import { delTour, updateData, updatePrice } from "../../../reducer/tourReducer";
 
-
-
 export default function TourCard({
   media,
   tourName,

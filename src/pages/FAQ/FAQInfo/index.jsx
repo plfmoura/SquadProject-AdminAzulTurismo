@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap'
 import './faqInfo.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { patchDuvida } from '../faqActions';
+import { updateDuvida } from '../../../reducer/duvidasReducer';
 
 export default function FAQInfo({ onAbort, onSubmit, filteredKey }) {
     const state = useSelector((state) => state);
@@ -23,7 +24,7 @@ export default function FAQInfo({ onAbort, onSubmit, filteredKey }) {
             patchDuvida(id, { response: answer })
             dispatch(updateDuvida({
                 id: id,
-                newResponse: answer
+                response: answer
             }))
         } catch (error) {
             console.log(error)
