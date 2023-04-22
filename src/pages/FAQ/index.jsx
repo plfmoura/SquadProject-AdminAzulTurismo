@@ -22,10 +22,9 @@ export default function FAQ() {
   }, [])
 
   useEffect(() => {
-    setData(state.faq.faq)
+    setData(state.duvidas.duvidas)
     setTimeout(() => {
       setLoading(false)
-      console.log('opa')
     }, [3000])
   }, [state])
 
@@ -43,7 +42,7 @@ export default function FAQ() {
         show={modalShow}
         modalsize="md"
         children={
-          <FAQInfo onAbort={() => { setModalShow(false) }} filteredKey={selectedQuestion} />
+          <FAQInfo onAbort={() => { setModalShow(false) }} filteredKey={selectedQuestion} onSubmit={() => { setModalShow(false) }}/>
         }
       />
       <div className="Faq-container">
@@ -68,7 +67,7 @@ export default function FAQ() {
                   status={question.response != "" ? true : false}
                   text={question.question}
                   key={key}
-                  onSettings={() => { handleQuestionSelected(question.id_faq) }}
+                  onSettings={() => { handleQuestionSelected(question.id_duvida) }}
                 />
               )
             }
