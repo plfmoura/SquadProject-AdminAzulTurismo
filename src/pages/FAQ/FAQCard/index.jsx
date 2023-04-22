@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { RiSettings5Fill, RiDeleteBin6Fill } from "react-icons/ri";
 import "./faqCard.css";
 
-export default function FAQCard({ text, status, user, date }) {
+export default function FAQCard({ text, status, user, date, onSettings, onDelete }) {
   return (
     <div className="faqCard-container">
       <textarea
@@ -14,9 +14,9 @@ export default function FAQCard({ text, status, user, date }) {
         className="faqCard-question-area"
       ></textarea>
       <div className="faqCard-footer-area">
-        <RiDeleteBin6Fill className="faqCard-delete-icon"/>
+        <RiDeleteBin6Fill className="faqCard-delete-icon" onClick={onDelete}/>
         { status && <span style={{color: '#2ea9ff'}}>Pergunta Respondida!</span>}
-        <RiSettings5Fill className="faqCard-settings-icon"/> 
+        <RiSettings5Fill className="faqCard-settings-icon" onClick={onSettings}/> 
       </div>
     </div>
   );

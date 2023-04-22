@@ -1,0 +1,28 @@
+.FaqInfo-container {
+    width: 28rem;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-content textarea{
+    resize: none;
+}
+
+#user-question-textArea {
+    resize: none;
+    background-color: #c1c1c1;
+    outline: none;
+    pointer-events: none;
+}
+
+.info-footer {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+}
