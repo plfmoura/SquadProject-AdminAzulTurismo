@@ -18,10 +18,14 @@ export const duvidasSlice = createSlice({
         ? { ...item, response: action.payload.response }
         : item
     )},
+    delDuvida:(state,action)=>{
+      let id=action.payload;
+      state.duvidas=state.duvidas.filter((item)=>item.id_duvida!=id)
+    },
     }
   });
 
 // Action creators are generated for each case reducer function
-export const { setDuvidas, updateDuvida } = duvidasSlice.actions;
+export const { setDuvidas, updateDuvida, delDuvida } = duvidasSlice.actions;
 
 export default duvidasSlice.reducer;

@@ -4,14 +4,17 @@ import { CardContext } from "../../context/CardContext";
 import { RiSearchLine } from "react-icons/ri";
 import './faq.css'
 import FAQCard from './FAQCard';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PreLoader from '../../assets/Animations/PreLoader'
 import OurModal from '../../components/Modal'
 import FAQInfo from './FAQInfo';
+import { deleteDuvida } from './faqActions';
+import { delDuvida } from '../../reducer/duvidasReducer';
 
 export default function FAQ() {
   const { handleClean, setQuestions } = useContext(CardContext)
   const state = useSelector((state) => state);
+  const dispatch = useDispatch()
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true)
   const [modalShow, setModalShow] = useState(false);
@@ -28,12 +31,17 @@ export default function FAQ() {
     }, [3000])
   }, [state])
 
-
   const [selectedQuestion, setSelectedQuestion] = useState(null)
 
   const handleQuestionSelected = (key) => {
     setSelectedQuestion(key)
     setModalShow(true)
+  }
+
+  const handleDeleteQuestion = (key) => {
+    let id = key;
+    deleteDuvida(id)
+    dispatch(delDuvida(id))
   }
 
   return (
@@ -42,7 +50,7 @@ export default function FAQ() {
         show={modalShow}
         modalsize="md"
         children={
-          <FAQInfo onAbort={() => { setModalShow(false) }} filteredKey={selectedQuestion} onSubmit={() => { setModalShow(false) }}/>
+          <FAQInfo onAbort={() => { setModalShow(false) }} filteredKey={selectedQuestion} onSubmit={() => { setModalShow(false) }} />
         }
       />
       <div className="Faq-container">
@@ -68,6 +76,7 @@ export default function FAQ() {
                   text={question.question}
                   key={key}
                   onSettings={() => { handleQuestionSelected(question.id_duvida) }}
+                  onDelete={() => { handleDeleteQuestion(question.id_duvida) }}
                 />
               )
             }

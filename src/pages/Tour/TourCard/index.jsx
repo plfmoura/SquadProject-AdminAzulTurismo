@@ -81,15 +81,12 @@ export default function TourCard({
               />
               <RiCheckboxFill 
                   onClick={() => {
-                
                     //Patch do price
-                    
                     patchTour(id,{price:Number(inputPrice.current.value).toFixed(2)});
                     dispatch(
                       updatePrice({id:id,price:Number(inputPrice.current.value).toFixed(2)})
                     );
                     setPriceController(!priceController)
-                    
                   }}
                   className='done-icon-editable-input'
                   />
