@@ -1,9 +1,15 @@
-### Projeto em Grupo - Módulo V
+### Projeto em Grupo - Módulo V 
 <br/>
 
 <div align="center">
-  <img src="./public/azul.png" width="10%" /> <h1>Azul Turismo</h1>
+  <img src="./public/azul.png" width="10%" /> <h1>Plataforma Administrativa da Azul Turismo</h1>
 </div>
+
+- Para entrar na plataforma utilize as seguintes credências:</br>
+  email: convidado@gmail.com</br>
+  senha: convidado</br>
+  
+ - OBS: As funcionalidades são bloqueadas devido ao acesso de convidado(a), solicite um TOUR pela plataforma como ADM a equipe de desenvolvimento através do linkedin: <a href="https://www.linkedin.com/in/pedro-lucas-moura/">Perfil de Pedro Moura</a> ou <a href="https://www.linkedin.com/in/juan-pablo-urgelles-pelier-b18489237/">Perfil de Juan Pablo</a> ou qualquer contribuidor deste projeto através do linkedin. 
 
 <br/>
 Azul Turismo - uma empresa de turismo que está abrindo as portas virtualmente, neste primeiro momento no Estado do Rio de Janeiro, 
