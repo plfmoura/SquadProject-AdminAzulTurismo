@@ -41,7 +41,7 @@ const NavBar = () => {
       method: "GET",
       url: "https://tourismapi.herokuapp.com/compras",
       headers: {
-        "auth-token": token,
+        "admin-token": token,
       },
     };
     try {
@@ -59,6 +59,9 @@ const NavBar = () => {
     const options = {
       method: "GET",
       url: "https://tourismapi.herokuapp.com/products",
+      headers: {
+        "admin-token": token,
+      },
     };
     try {
       let tour = await axios.request(options);
@@ -74,7 +77,7 @@ const NavBar = () => {
       method: "GET",
       url: "https://tourismapi.herokuapp.com/users",
       headers: {
-        "auth-token": token,
+        "admin-token": token,
       },
     };
     try {
