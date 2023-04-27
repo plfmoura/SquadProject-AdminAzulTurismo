@@ -1,6 +1,3 @@
-### Projeto em Grupo - Módulo V 
-<br/>
-
 <div align="center">
   <img src="./public/azul.png" width="10%" /> <h1>Plataforma Administrativa da Azul Turismo</h1>
 </div>
