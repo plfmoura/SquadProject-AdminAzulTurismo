@@ -135,7 +135,7 @@ const NavBar = () => {
           </div>
           <ul>
             <li>
-              <Button variant="light">Visitar Site</Button>
+              <Button variant="light" href="https://azul-turismo.vercel.app/" target="_blank">Visitar Site</Button>
             </li>
             <li
               onClick={() => {
