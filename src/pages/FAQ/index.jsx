@@ -32,16 +32,17 @@ export default function FAQ() {
   }, [state])
 
   const [selectedQuestion, setSelectedQuestion] = useState(null)
-
   const handleQuestionSelected = (key) => {
     setSelectedQuestion(key)
     setModalShow(true)
   }
 
-  const handleDeleteQuestion = (key) => {
+  const handleDeleteQuestion = async (key) => {
     let id = key;
-    deleteDuvida(id)
-    dispatch(delDuvida(id))
+    // await deleteDuvida(id) 
+    console.log(await deleteDuvida(400) )
+    // dispatch(delDuvida(id))
+    // setState(await deleteDuvida(id))
   }
 
   return (
