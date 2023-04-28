@@ -3,7 +3,7 @@ import adminReducer from "../reducer/adminReducer";
 import comprasReducer from "../reducer/comprasReducer";
 import tourReducer from "../reducer/tourReducer";
 import usersReducer from "../reducer/usersReducer";
-import faqReducer from "../reducer/faqReducer";
+import duvidasReducer from "../reducer/duvidasReducer";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +11,6 @@ export const store = configureStore({
     compras: comprasReducer,
     users: usersReducer,
     tour: tourReducer,
-    faq: faqReducer
+    duvidas: duvidasReducer
   },
 });

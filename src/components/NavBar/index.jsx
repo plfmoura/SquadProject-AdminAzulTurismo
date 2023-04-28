@@ -5,7 +5,7 @@ import { delAdmin } from "../../reducer/adminReducer";
 import { setCompras } from "../../reducer/comprasReducer";
 import { setTour } from "../../reducer/tourReducer";
 import { setUsers } from "../../reducer/usersReducer";
-import { setFaq } from "../../reducer/faqReducer";
+import { setDuvidas } from "../../reducer/duvidasReducer";
 import axios from "axios";
 import "./navBar.css";
 import { Button } from "react-bootstrap";
@@ -41,7 +41,7 @@ const NavBar = () => {
       method: "GET",
       url: "https://tourismapi.herokuapp.com/compras",
       headers: {
-        "auth-token": token,
+        "admin-token": token,
       },
     };
     try {
@@ -59,6 +59,9 @@ const NavBar = () => {
     const options = {
       method: "GET",
       url: "https://tourismapi.herokuapp.com/products",
+      headers: {
+        "admin-token": token,
+      },
     };
     try {
       let tour = await axios.request(options);
@@ -74,7 +77,7 @@ const NavBar = () => {
       method: "GET",
       url: "https://tourismapi.herokuapp.com/users",
       headers: {
-        "auth-token": token,
+        "admin-token": token,
       },
     };
     try {
@@ -89,17 +92,17 @@ const NavBar = () => {
   const getFAQ = async () => {
     const options = {
       method: "GET",
-      url: "https://tourismapi.herokuapp.com/faq",
+      url: "https://tourismapi.herokuapp.com/duvidas",
       headers: {
-        "auth-token": token,
+        "admin-token": token,
       },
     };
     try {
-      let faq = await axios.request(options);
-      if (faq.status != 200) {
+      let duvidas = await axios.request(options);
+      if (duvidas.status != 200) {
         throw error("error");
       }
-      dispatch(setFaq(faq.data));
+      dispatch(setDuvidas(duvidas.data));
     } catch (error) {}
   };
 
@@ -132,7 +135,7 @@ const NavBar = () => {
           </div>
           <ul>
             <li>
-              <Button variant="light">Visitar Site</Button>
+              <Button variant="light" href="https://azul-turismo.vercel.app/" target="_blank">Visitar Site</Button>
             </li>
             <li
               onClick={() => {
@@ -168,7 +171,7 @@ const NavBar = () => {
             page={CardBgColorTickets}
           />
           <Card
-            value={data.faq.faq.length}
+            value={data.duvidas.duvidas.length}
             text="Perguntas de Usuários"
             icon={<RiStarFill />}
             onPress={() => navigate("/faq")}
