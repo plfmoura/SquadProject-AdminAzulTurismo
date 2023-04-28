@@ -33,7 +33,6 @@ export const deleteDuvida = async (id) => {
   };
   try {
     let deleted = await axios.request(options);
-    console.log(deleted)
     if (deleted.status != 200) {
       throw error("error");
     }

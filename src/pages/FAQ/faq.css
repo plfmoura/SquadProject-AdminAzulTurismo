@@ -62,7 +62,7 @@
 /* Seção do conteúdo da página  */
 .faq-content {
     width: 100%;
-    min-height: 100vh;
+    min-height: 70vh;
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
