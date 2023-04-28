@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import {
   RiSettings5Fill,
   RiCheckboxCircleFill,
@@ -10,6 +10,8 @@ import "./tourCard.css";
 import { deleteTour, patchTour} from "../tourActions";
 import { useDispatch } from "react-redux";
 import { delTour, updateData, updatePrice } from "../../../reducer/tourReducer";
+import { ActionsAlertContext } from "../../../context/ActionsAlertContext";
+import ActionSuccess from "../../../assets/Animations/ActionSuccess";
 
 export default function TourCard({
   media,
@@ -28,7 +30,7 @@ export default function TourCard({
   const dispatch = useDispatch();
   const inputDate=useRef();
   const inputPrice=useRef();
- 
+  const { showMotionAction } = useContext(ActionsAlertContext)
 
   const alterDate = () => {
     setSmallMenu(false)
@@ -87,6 +89,7 @@ export default function TourCard({
                       updatePrice({id:id,price:Number(inputPrice.current.value).toFixed(2)})
                     );
                     setPriceController(!priceController)
+                    showMotionAction(<ActionSuccess />, 'O valor foi alterado com sucesso!', 3000)
                   }}
                   className='done-icon-editable-input'
                   />
