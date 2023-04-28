@@ -10,6 +10,7 @@ import OurModal from '../../components/Modal'
 import FAQInfo from './FAQInfo';
 import { deleteDuvida } from './faqActions';
 import { delDuvida } from '../../reducer/duvidasReducer';
+import DeleteSuccess from '../../assets/Animations/DeleteSuccess'
 
 export default function FAQ() {
   const { handleClean, setQuestions } = useContext(CardContext)
@@ -32,6 +33,8 @@ export default function FAQ() {
   }, [state])
 
   const [selectedQuestion, setSelectedQuestion] = useState(null)
+  const [deletedStatus, setDeletedStatus] = useState(false)
+
   const handleQuestionSelected = (key) => {
     setSelectedQuestion(key)
     setModalShow(true)
@@ -39,14 +42,26 @@ export default function FAQ() {
 
   const handleDeleteQuestion = async (key) => {
     let id = key;
-    // await deleteDuvida(id) 
-    console.log(await deleteDuvida(400) )
-    // dispatch(delDuvida(id))
-    // setState(await deleteDuvida(id))
+    let status = await deleteDuvida(id) 
+    setDeletedStatus(status)
+    dispatch(delDuvida(id))
   }
+
+  useEffect(() => {
+    if(deletedStatus){
+      setTimeout(() => {
+        setDeletedStatus(false)
+      } , [4000])
+    }
+  } , [deletedStatus])
 
   return (
     <>
+    {deletedStatus && 
+      <div style={{display: 'grid', placeContent: 'center', position: 'fixed', zIndex: 300, width: '100%'}}>
+        <DeleteSuccess />
+      </div>
+    }
       <OurModal
         show={modalShow}
         modalsize="md"
