@@ -12,6 +12,7 @@ import { deleteDuvida } from './faqActions';
 import { delDuvida } from '../../reducer/duvidasReducer';
 import DeleteSuccess from '../../assets/Animations/DeleteSuccess'
 import ActionSuccess from '../../assets/Animations/ActionSuccess';
+import { checkError } from '../../checkErrorStatus';
 
 export default function FAQ() {
   const { handleClean, setQuestions } = useContext(CardContext)
@@ -44,10 +45,14 @@ export default function FAQ() {
 
   const handleDeleteQuestion = async (key) => {
     let id = key;
-    let status = await deleteDuvida(id)
-    setDeletedStatus(status)
-    dispatch(delDuvida(id))
-    setShowAnimation(<><DeleteSuccess /><p style={{color: '#fff', fontWeight: '600'}}>A pergunta foi excluída!</p></>)
+    try {
+      let status = await deleteDuvida(id)
+      dispatch(delDuvida(id))
+      setDeletedStatus(status)
+      setShowAnimation(<><DeleteSuccess /><p style={{ color: '#fff', fontWeight: '600' }}>A pergunta foi excluída!</p></>)
+    } catch (error) {
+      console.log(checkError(error))
+    }
   }
 
   useEffect(() => {
@@ -61,7 +66,7 @@ export default function FAQ() {
   const handleSubmitAnswer = () => {
     setModalShow(false)
     setDeletedStatus(true)
-    setShowAnimation(<><ActionSuccess /> <p style={{color: '#fff', fontWeight: '600'}}>Resposta enviada com sucesso!</p></>)
+    setShowAnimation(<><ActionSuccess /> <p style={{ color: '#fff', fontWeight: '600' }}>Resposta enviada com sucesso!</p></>)
   }
 
   return (

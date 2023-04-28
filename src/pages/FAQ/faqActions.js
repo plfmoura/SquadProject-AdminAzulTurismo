@@ -1,8 +1,7 @@
 import axios from "axios";
 
-let token = JSON.parse(localStorage.getItem("token_admin"));
-
 export const patchDuvida = async (id, data) => {
+  let token = JSON.parse(localStorage.getItem("token_admin"));
   const options = {
     method: "PATCH",
     url: `https://tourismapi.herokuapp.com/duvida/${id}`,
@@ -23,6 +22,7 @@ export const patchDuvida = async (id, data) => {
 }
 
 export const deleteDuvida = async (id) => {
+  let token = JSON.parse(localStorage.getItem("token_admin"));
   let status = false
   const options = {
     method: "DELETE",
@@ -31,14 +31,12 @@ export const deleteDuvida = async (id) => {
       "admin-token": token,
     },
   };
-  try {
-    let deleted = await axios.request(options);
-    if (deleted.status != 200) {
-      throw error("error");
-    }
-    status = true
-  } catch (error) {
-    console.log(error);
+
+  let deleted = await axios.request(options);
+  console.log(deleted)
+  if (deleted.statusText !== "OK") {
+    throw error(deleted);
   }
+  status = true
   return status
 }
