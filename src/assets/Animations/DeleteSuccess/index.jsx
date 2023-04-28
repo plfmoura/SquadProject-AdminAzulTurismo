@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import Lottie from "react-lottie-player";
 import delete_animation from "./delete.json";
+import '../animation_styles.css'
 
 export default function DeleteSuccess() {
-  const [animation, setAnimation] = useState(false);
-  setTimeout(() => {
-    setAnimation(true);
-  }, [1000]);
+  const [animation, setAnimation] = useState(true);
 
   return (
     <Lottie

@@ -11,6 +11,7 @@ import FAQInfo from './FAQInfo';
 import { deleteDuvida } from './faqActions';
 import { delDuvida } from '../../reducer/duvidasReducer';
 import DeleteSuccess from '../../assets/Animations/DeleteSuccess'
+import ActionSuccess from '../../assets/Animations/ActionSuccess';
 
 export default function FAQ() {
   const { handleClean, setQuestions } = useContext(CardContext)
@@ -34,6 +35,7 @@ export default function FAQ() {
 
   const [selectedQuestion, setSelectedQuestion] = useState(null)
   const [deletedStatus, setDeletedStatus] = useState(false)
+  const [showAnimation, setShowAnimation] = useState(null)
 
   const handleQuestionSelected = (key) => {
     setSelectedQuestion(key)
@@ -42,31 +44,51 @@ export default function FAQ() {
 
   const handleDeleteQuestion = async (key) => {
     let id = key;
-    let status = await deleteDuvida(id) 
+    let status = await deleteDuvida(id)
     setDeletedStatus(status)
     dispatch(delDuvida(id))
+    setShowAnimation(<><DeleteSuccess /><p style={{color: '#fff', fontWeight: '600'}}>A pergunta foi excluída!</p></>)
   }
 
   useEffect(() => {
-    if(deletedStatus){
+    if (deletedStatus) {
       setTimeout(() => {
         setDeletedStatus(false)
-      } , [4000])
+      }, [4000])
     }
-  } , [deletedStatus])
+  }, [deletedStatus])
+
+  const handleSubmitAnswer = () => {
+    setModalShow(false)
+    setDeletedStatus(true)
+    setShowAnimation(<><ActionSuccess /> <p style={{color: '#fff', fontWeight: '600'}}>Resposta enviada com sucesso!</p></>)
+  }
 
   return (
     <>
-    {deletedStatus && 
-      <div style={{display: 'grid', placeContent: 'center', position: 'fixed', zIndex: 300, width: '100%'}}>
-        <DeleteSuccess />
-      </div>
-    }
+      {deletedStatus &&
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'fixed',
+            zIndex: 300,
+            width: '100%',
+            height: '100vh',
+            top: 0,
+            backgroundColor: '#555555ee'
+          }}
+        >
+          {showAnimation}
+        </div>
+      }
       <OurModal
         show={modalShow}
         modalsize="md"
         children={
-          <FAQInfo onAbort={() => { setModalShow(false) }} filteredKey={selectedQuestion} onSubmit={() => { setModalShow(false) }} />
+          <FAQInfo onAbort={() => { setModalShow(false) }} filteredKey={selectedQuestion} onSubmit={() => { handleSubmitAnswer() }} />
         }
       />
       <div className="Faq-container">
