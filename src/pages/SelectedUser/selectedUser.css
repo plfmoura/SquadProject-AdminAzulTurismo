@@ -1,0 +1,12 @@
+.SelectedUser-container {
+    min-height: 100vh;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.selectedUser-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4rem;
+}

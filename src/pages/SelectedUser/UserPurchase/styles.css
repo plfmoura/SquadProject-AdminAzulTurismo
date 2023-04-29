@@ -1,0 +1,14 @@
+.UserPurchase-container {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 30rem;
+}
+
+.userPurchase-content {
+    border: 1px solid black;
+    width: 90%;
+    margin-bottom: 5%;
+}

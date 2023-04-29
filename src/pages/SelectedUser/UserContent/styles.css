@@ -1,0 +1,39 @@
+.UserContent-container {
+    background-color: #fff;
+    width: 40rem;
+    border: 1px solid black;
+    display: grid;
+    place-content: center;
+    padding: 2rem 0;
+}
+
+.userContent-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.userContent-picture {
+    width: 8rem;
+    height: 10rem;
+}
+
+.action-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.userContent-statics {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.total-rating,
+.total-purchase {
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    width: 8rem;
+}

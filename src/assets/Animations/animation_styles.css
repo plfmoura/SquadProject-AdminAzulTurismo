@@ -6,6 +6,10 @@
     animation: appears 500ms ease-in normal;
 }
 
+.animated-deniedAccess {
+    animation: appears 500ms ease-in normal;
+}
+
 @keyframes appears {
     from {
         opacity: 0;

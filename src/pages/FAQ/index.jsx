@@ -13,6 +13,9 @@ import { delDuvida } from '../../reducer/duvidasReducer';
 import DeleteSuccess from '../../assets/Animations/DeleteSuccess'
 import ActionSuccess from '../../assets/Animations/ActionSuccess';
 import { checkError } from '../../checkErrorStatus';
+import AccessDenied from '../../assets/Animations/AccessDenied';
+import { ActionsAlertContext } from '../../context/ActionsAlertContext';
+import BadNetwork from '../../assets/Animations/BadNetwork';
 
 export default function FAQ() {
   const { handleClean, setQuestions } = useContext(CardContext)
@@ -35,43 +38,36 @@ export default function FAQ() {
   }, [state])
 
   const [selectedQuestion, setSelectedQuestion] = useState(null)
-  const [deletedStatus, setDeletedStatus] = useState(false)
-  const [showAnimation, setShowAnimation] = useState(null)
 
   const handleQuestionSelected = (key) => {
     setSelectedQuestion(key)
     setModalShow(true)
   }
+  const { showMotionAction, showAnimation, actionStatus } = useContext(ActionsAlertContext)
 
   const handleDeleteQuestion = async (key) => {
     let id = key;
     try {
       let status = await deleteDuvida(id)
       dispatch(delDuvida(id))
-      setDeletedStatus(status)
-      setShowAnimation(<><DeleteSuccess /><p style={{ color: '#fff', fontWeight: '600' }}>A pergunta foi excluída!</p></>)
+      showMotionAction(<DeleteSuccess />, 'A pergunta foi excluída!', 3000)
     } catch (error) {
-      console.log(checkError(error))
+      if(checkError(error) === 'Verifique sua internet!'){
+        showMotionAction(<BadNetwork />, 'Poxa, algo deu errado! Verifique sua internet.', 3000)
+      }else {
+        showMotionAction(<AccessDenied />, 'Você não possui direitos para isso!', 3000)
+      }
     }
   }
 
-  useEffect(() => {
-    if (deletedStatus) {
-      setTimeout(() => {
-        setDeletedStatus(false)
-      }, [4000])
-    }
-  }, [deletedStatus])
-
   const handleSubmitAnswer = () => {
     setModalShow(false)
-    setDeletedStatus(true)
-    setShowAnimation(<><ActionSuccess /> <p style={{ color: '#fff', fontWeight: '600' }}>Resposta enviada com sucesso!</p></>)
+    showMotionAction(<ActionSuccess />, 'Resposta enviada com sucesso!', 3000)
   }
 
   return (
     <>
-      {deletedStatus &&
+      {actionStatus &&
         <div
           style={{
             display: 'flex',

@@ -11,6 +11,7 @@ import NavBar from "./components/NavBar";
 import { useEffect } from "react";
 import { setAdmin } from "./reducer/adminReducer";
 import FAQ from "./pages/FAQ";
+import SelectedUser from "./pages/SelectedUser";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ function App() {
             <Route exact path="/purchase" element={<Purchase />}></Route>
             <Route exact path="/tour" element={<Tour />}></Route>
             <Route exact path="/users" element={<Users />}></Route>
+            <Route exact path="/selected-user" element={<SelectedUser />}></Route>
             <Route exact path="/faq" element={<FAQ />}></Route>
             <Route path="*" element={<ErrorPage />}></Route>
           </Routes>

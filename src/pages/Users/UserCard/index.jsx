@@ -4,6 +4,7 @@ import {
   RiDeleteBin6Fill,
   RiCheckboxCircleFill,
 } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 export default function UserCard({
   media,
@@ -12,9 +13,13 @@ export default function UserCard({
   located,
   purchaseAmount,
 }) {
+
+  const navigate = useNavigate('')
+
   return (
     <div
-      className="userCard-container"
+    onClick={() => navigate("/selected-user")}  
+    className="userCard-container"
       style={{
         display: "flex",
         alignItems: "center",
