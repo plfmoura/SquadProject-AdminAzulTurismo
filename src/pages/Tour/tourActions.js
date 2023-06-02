@@ -3,7 +3,7 @@ export const deleteTour = async(id) => {
     let token = JSON.parse(localStorage.getItem("token_admin"));
     const options = {
         method: "DELETE",
-        url: `https://tourismapi.herokuapp.com/product/${id}`,
+        url: `${import.meta.env.VITE_BASE_URL}/product/${id}`,
         headers: {
           "auth-token": token,
         },
@@ -25,7 +25,7 @@ export const patchTour = async(id,data) => {
     let token = JSON.parse(localStorage.getItem("token_admin"));
       const options = {
         method: "PATCH",
-        url: `https://tourismapi.herokuapp.com/product/${id}`,
+        url: `${import.meta.env.VITE_BASE_URL}/product/${id}`,
         headers: {
           "auth-token": token,
         },

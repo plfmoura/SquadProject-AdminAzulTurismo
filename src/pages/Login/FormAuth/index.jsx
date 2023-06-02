@@ -23,7 +23,7 @@ function FormAuth() {
     setShowContent(!showContent)
     const options = {
       method: "POST",
-      url: "https://tourismapi.herokuapp.com/admin/login",
+      url: `${import.meta.env.VITE_BASE_URL}/admin/login`,
       headers: { "Content-Type": "application/json" },
       data: { email: email, password: password },
     };

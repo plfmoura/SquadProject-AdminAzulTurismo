@@ -12,7 +12,7 @@ import { deleteDuvida } from './faqActions';
 import { delDuvida } from '../../reducer/duvidasReducer';
 import DeleteSuccess from '../../assets/Animations/DeleteSuccess'
 import ActionSuccess from '../../assets/Animations/ActionSuccess';
-import { checkError } from '../../checkErrorStatus';
+import { checkError } from '../../services/checkErrorStatus';
 
 export default function FAQ() {
   const { handleClean, setQuestions } = useContext(CardContext)

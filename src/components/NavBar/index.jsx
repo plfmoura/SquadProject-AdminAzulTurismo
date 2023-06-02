@@ -39,7 +39,7 @@ const NavBar = () => {
   const getCompras = async () => {
     const options = {
       method: "GET",
-      url: "https://tourismapi.herokuapp.com/compras",
+      url: `${import.meta.env.VITE_BASE_URL}/compras`,
       headers: {
         "admin-token": token,
       },
@@ -58,7 +58,7 @@ const NavBar = () => {
   const getTour = async () => {
     const options = {
       method: "GET",
-      url: "https://tourismapi.herokuapp.com/products",
+      url: `${import.meta.env.VITE_BASE_URL}/products`,
       headers: {
         "admin-token": token,
       },
@@ -75,7 +75,7 @@ const NavBar = () => {
   const getUsers = async () => {
     const options = {
       method: "GET",
-      url: "https://tourismapi.herokuapp.com/users",
+      url: `${import.meta.env.VITE_BASE_URL}/users`,
       headers: {
         "admin-token": token,
       },
@@ -92,7 +92,7 @@ const NavBar = () => {
   const getFAQ = async () => {
     const options = {
       method: "GET",
-      url: "https://tourismapi.herokuapp.com/duvidas",
+      url: `${import.meta.env.VITE_BASE_URL}/duvidas`,
       headers: {
         "admin-token": token,
       },
